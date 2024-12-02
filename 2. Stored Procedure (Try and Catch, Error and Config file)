@@ -3,16 +3,16 @@ CREATE PROCEDURE dbo.GetAverageSalesByRegion
 AS
 BEGIN
     BEGIN TRY
-#        -- Main logic
+        -- Main logic
         SELECT Region, AVG(TotalSales) AS AverageSales
         FROM SalesSummary
         WHERE Region = @Region
         GROUP BY Region;
     END TRY
     BEGIN CATCH
-#        -- Handle errors
+        -- Handle errors
         PRINT 'An error occurred while executing the procedure.';
-        PRINT ERROR_MESSAGE(); #-- Print detailed error message
-        RETURN -1; # -- Optional: Return a specific error code to indicate failure
+        PRINT ERROR_MESSAGE(); -- Print detailed error message
+        RETURN -1;  -- Optional: Return a specific error code to indicate failure
     END CATCH
 END;
