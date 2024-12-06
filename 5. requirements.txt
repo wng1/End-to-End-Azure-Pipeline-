@@ -1,0 +1,9 @@
+azure-identity
+azure-keyvault-secrets
+azure-kusto-data
+azure-kusto-ingest
+azure-ai-textanalytics
+httpx
+redis
+python-dotenv
+pytest
