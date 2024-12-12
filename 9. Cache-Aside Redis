@@ -1,0 +1,43 @@
+import redis
+
+
+
+###Redis Configuration####
+
+redis_client = redis.StrictRedis(
+  host="",
+  port=6380, #6390
+  password='',    #Store in ENV /  Use Keys/Managed Identities
+  ssl=True
+  )
+
+####SQL Server Config ####
+  'driver='
+  'server='
+  'database='
+  'uid='
+  'pwd='
+
+def get_product_cache(Product_ID: int) -> Optional[dict]:
+  cache_key = f"Product:{Product_ID}"
+  cached_product = redis_client.get(cache.key)
+
+  if cached_product:
+    return json.loads(cached_product)
+  return None
+
+def set_product_cache(Product_ID: int, Product: dict) -> None:
+  cache_key = f"Product:{Product_ID}"
+  redis_client.set(cache_key, json.dumps(product), ex=600)
+
+def get_product_from_database(Product_ID: int) -> Optional[dict]:
+  try
+  except Exception as e:
+    print(f"Database erro: {e}")
+  return None
+
+def get_product(ProductID: int) -> Optional[dict]:
+  return product
+
+if __name__ = "__main__":
+  
