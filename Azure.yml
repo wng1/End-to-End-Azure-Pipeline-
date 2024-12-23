@@ -20,5 +20,15 @@ stages:
     jobs:
     - deployment: ApprovalCheckDeployToUAT
       displayName: "Approval Check to Deploy to UAT"
-
+      environment: UAT
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - powershell: |
+                Write-Host "Deploy to UAT has been fully approved. Starting the deployment to UAT. "
+                
+    - job: DeployAzureResources
+      displayName: "Deploy Azure Rsources Via Bicep"
+      
     
