@@ -30,5 +30,7 @@ stages:
                 
     - job: DeployAzureResources
       displayName: "Deploy Azure Rsources Via Bicep"
+      steps:
+      
       
     
