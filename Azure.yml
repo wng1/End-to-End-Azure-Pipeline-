@@ -1,0 +1,24 @@
+name: PipelineTest-$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger:
+  - main
+pool:
+  vmImage "ubuntu-latest"
+
+stages:
+  - stage: BuildDEVDataFactory
+
+#DEPLOY TO THE UAT
+  - stage: DeployToUAT
+    dependsOn: BuildDEVDataFactory
+    condition: succeeded()
+    displayName: "Deploy to UAT"
+
+    variiables:
+    - template: variables/uat-variables.yml
+
+    jobs:
+    - deployment: ApprovalCheckDeployToUAT
+      displayName: "Approval Check to Deploy to UAT"
+
+    
